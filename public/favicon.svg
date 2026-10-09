@@ -1,1 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#07070a"/><path d="M42 18c-3-3-7-4-11-4-7 0-12 4-12 10 0 13 26 8 26 20 0 5-5 8-11 8-5 0-9-2-12-5" fill="none" stroke="#e5132b" stroke-width="7" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="uFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7f7"/>
+      <stop offset="0.42" stop-color="#ffb4bc"/>
+      <stop offset="0.72" stop-color="#ff243f"/>
+      <stop offset="1" stop-color="#8f001b"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="26" fill="#08080b"/>
+  <path d="M25 24 H43 V68 C43 83 50 91 64 91 C78 91 85 83 85 68 V24 H103 V69 C103 96 88 111 64 111 C40 111 25 96 25 69 Z"
+        fill="url(#uFill)" stroke="#ff4258" stroke-width="1.5" stroke-linejoin="round" filter="url(#glow)"/>
+  <path d="M32 29 H39 V68 C39 82 47 94 62 97" fill="none" stroke="#fff5f5" stroke-opacity=".8" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
