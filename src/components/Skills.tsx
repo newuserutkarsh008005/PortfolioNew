@@ -48,7 +48,7 @@ export default function Skills() {
               </motion.p>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4">
                 {category.skills.map((s) => (
-                  <SkillCard key={s.name} skill={s} hue={hue} />
+                  <SkillCard key={s.name} skill={s} hue={hue} revealNoteOnHover={category.id === 'ai'} />
                 ))}
               </div>
             </motion.div>
@@ -59,7 +59,7 @@ export default function Skills() {
   );
 }
 
-function SkillCard({ skill, hue }: { skill: Skill; hue: string }) {
+function SkillCard({ skill, hue, revealNoteOnHover }: { skill: Skill; hue: string; revealNoteOnHover: boolean }) {
   const [open, setOpen] = useState(false);
   const evidence = skillEvidence[skill.name];
 
@@ -91,13 +91,24 @@ function SkillCard({ skill, hue }: { skill: Skill; hue: string }) {
       </motion.span>
       <span className="relative mt-4 flex items-center gap-2 text-[15px] font-semibold text-bone">
         {skill.name}
-        {skill.note && (
+        {skill.note && !revealNoteOnHover && (
           <span className="rounded px-1.5 py-px text-[9px] font-bold uppercase tracking-wider text-ink" style={{ background: hue }}>
             {skill.note}
           </span>
         )}
       </span>
       <AnimatePresence initial={false}>
+        {open && revealNoteOnHover && skill.note && (
+          <motion.span
+            className="relative mt-2 block text-[11px] leading-snug text-mist"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {skill.note}
+          </motion.span>
+        )}
         {open && evidence && (
           <motion.span
             className="relative mt-2 block text-[11px] leading-snug text-mist"
